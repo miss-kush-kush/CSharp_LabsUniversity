@@ -1,0 +1,10 @@
+The task is to create a converter of a file in csv format to html format. 
+The converter is to meet the following assumptions: 
+The first row of the csv file contains column headers. 
+The number of columns and rows is not limited. The number of columns in each row is identical. 
+The code of the table can be found at: 
+https://www.w3schools.com/html/html_tables.asp 
+Load all the lines from the csv file. 
+Divide each line into columns 
+Mark the first line with special formatting as a header 
+Label the remaining lines with formatting alternating light dark
