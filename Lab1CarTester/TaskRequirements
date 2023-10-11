@@ -1,0 +1,19 @@
+Simple inheritance Car park 
+Abstract class car: 
+Methods: Start, Turn off, Refuel, Drive 
+Descendant classes: 
+CarPetrol -> Refuels with petrol 
+CarGas -> Refuels with gas 
+CarCurrent -> Refuels with electricity -> charges batteries 
+The DriveTest method takes an object of the Car class as a parameter 
+Attempts to execute methods that produce the following effect: 
+Refuel() -> refuel *** 
+Refuel() -> car already refueled *** 
+Drive() -> car is not started 
+Run() -> I start the car 
+Run() -> the car is already running 
+Drive() -> I'm going to *** 
+Drive() -> no *** refuel 
+Turn off() -> I turn off the engine 
+Turn off() -> the engine is off 
+In the program, create a list of three objects of type Car for each object from the list (iteratively ) call the method DriveTest
