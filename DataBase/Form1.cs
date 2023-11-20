@@ -57,18 +57,26 @@ namespace DataBase
                 }
                 info = $"{name} {surname} {dateOfBirth} {gender}";
                 listBox1.Items.Add(info);
+
+
+                Clear();
             }
+        }
+
+        private void Clear()
+        {
+            tbName.Clear();
+            tbSurname.Clear();
+            dateTimePicker1.Value = DateTime.Now;
+            rbFemale.Checked = false;
+            rbMale.Checked = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
             {
-                tbName.Clear();
-                tbSurname.Clear();
-                dateTimePicker1.Value = DateTime.Now;
-                rbFemale.Checked = false;
-                rbMale.Checked = false;
+                Clear();
                 listBox1.Items.Remove(listBox1.SelectedItem);
                 listBox1.SelectedIndex = -1;
             }
@@ -81,7 +89,7 @@ namespace DataBase
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.SelectedItem != null)
+            if (listBox1.SelectedItem != null)
             {
                 info = listBox1.SelectedItem.ToString();
                 string[] parts = info.Split(' ');
@@ -101,7 +109,37 @@ namespace DataBase
                     rbMale.Checked = true;
                 }
             }
-            
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                // Check if the selected index is within the bounds of the ListBox items
+                if (listBox1.SelectedIndex < listBox1.Items.Count)
+                {
+                    name = tbName.Text;
+                    surname = tbSurname.Text;
+                    dateOfBirth = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+                    if (rbMale.Checked)
+                    {
+                        gender = rbMale.Text;
+                    }
+                    if (rbFemale.Checked)
+                    {
+                        gender = rbFemale.Text;
+                    }
+
+                    // Update the ListBox item with the modified information
+                    listBox1.Items[listBox1.SelectedIndex] = $"{name} {surname} {dateOfBirth} {gender}";
+                    Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from the ListBox to edit.");
+            }
         }
     }
 }
