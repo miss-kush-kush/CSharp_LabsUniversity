@@ -1,4 +1,4 @@
-﻿namespace DataBase
+namespace DataBase
 {
     partial class Form1
     {
@@ -40,6 +40,7 @@
             rbFemale = new RadioButton();
             rbMale = new RadioButton();
             groupBox1 = new GroupBox();
+            btnEdit = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -155,11 +156,22 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Gender";
             // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(123, 513);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(112, 34);
+            btnEdit.TabIndex = 13;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 559);
+            Controls.Add(btnEdit);
             Controls.Add(groupBox1);
             Controls.Add(btnDelete);
             Controls.Add(btnSubmit);
@@ -192,5 +204,6 @@
         private RadioButton rbFemale;
         private RadioButton rbMale;
         private GroupBox groupBox1;
+        private Button btnEdit;
     }
 }
