@@ -1,0 +1,16 @@
+D:\Programming\C#\LabsZUT\Timer\Timer\bin\Debug\net7.0-windows\Timer.exe
+D:\Programming\C#\LabsZUT\Timer\Timer\bin\Debug\net7.0-windows\Timer.deps.json
+D:\Programming\C#\LabsZUT\Timer\Timer\bin\Debug\net7.0-windows\Timer.runtimeconfig.json
+D:\Programming\C#\LabsZUT\Timer\Timer\bin\Debug\net7.0-windows\Timer.dll
+D:\Programming\C#\LabsZUT\Timer\Timer\bin\Debug\net7.0-windows\Timer.pdb
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.Form1.resources
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.csproj.GenerateResource.cache
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.AssemblyInfoInputs.cache
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.AssemblyInfo.cs
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.csproj.CoreCompileInputs.cache
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.dll
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\refint\Timer.dll
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.pdb
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\Timer.genruntimeconfig.cache
+D:\Programming\C#\LabsZUT\Timer\Timer\obj\Debug\net7.0-windows\ref\Timer.dll
