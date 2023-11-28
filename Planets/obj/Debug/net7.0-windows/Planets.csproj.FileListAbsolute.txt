@@ -1,0 +1,16 @@
+D:\Programming\C#\LabsZUT\Planets\Planets\bin\Debug\net7.0-windows\Planets.exe
+D:\Programming\C#\LabsZUT\Planets\Planets\bin\Debug\net7.0-windows\Planets.deps.json
+D:\Programming\C#\LabsZUT\Planets\Planets\bin\Debug\net7.0-windows\Planets.runtimeconfig.json
+D:\Programming\C#\LabsZUT\Planets\Planets\bin\Debug\net7.0-windows\Planets.dll
+D:\Programming\C#\LabsZUT\Planets\Planets\bin\Debug\net7.0-windows\Planets.pdb
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.Form1.resources
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.csproj.GenerateResource.cache
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.AssemblyInfoInputs.cache
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.AssemblyInfo.cs
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.csproj.CoreCompileInputs.cache
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.dll
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\refint\Planets.dll
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.pdb
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\Planets.genruntimeconfig.cache
+D:\Programming\C#\LabsZUT\Planets\Planets\obj\Debug\net7.0-windows\ref\Planets.dll
