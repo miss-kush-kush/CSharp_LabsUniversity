@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
+using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace BackGroundWorker
@@ -7,6 +8,7 @@ namespace BackGroundWorker
     public partial class Form1 : Form
     {
         private bool isPaused = false;
+        private readonly object lockObject = new object();
         private int[,] matrixA;
         private int[,] matrixB;
 
@@ -18,6 +20,7 @@ namespace BackGroundWorker
 
         private void btnMultiply_Click(object sender, EventArgs e)
         {
+            progressBar1.Value = 0;
             int rowsMatrix1, colsMatrix1, rowsMatrix2, colsMatrix2;
             if (int.TryParse(txtRowsMatrix1.Text, out rowsMatrix1) &&
                 int.TryParse(txtColsMatrix1.Text, out colsMatrix1) &&
@@ -40,7 +43,7 @@ namespace BackGroundWorker
                 matrixB = GenerateRandomMatrix(rowsMatrix2, colsMatrix2);
                 DisplayMatrix(matrixB, txtMatrix2);
 
-                backgroundWorker1.RunWorkerAsync(new MatrixDimensions(rowsMatrix1, colsMatrix1, rowsMatrix2, colsMatrix2));
+                backgroundWorker1.RunWorkerAsync();
             }
         }
 
@@ -61,43 +64,44 @@ namespace BackGroundWorker
         private void btnStop_Click(object sender, EventArgs e)
         {
             backgroundWorker1.CancelAsync();
+            progressBar1.Value = 0;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            MatrixDimensions dimensions = (MatrixDimensions)e.Argument;
 
-            int[,] resultMatrix = new int[dimensions.RowsMatrix1, dimensions.ColsMatrix2];
+            int[,] resultMatrix = new int[matrixA.GetLength(0), matrixB.GetLength(1)];
 
-            int totalElements = dimensions.RowsMatrix1 * dimensions.ColsMatrix2;
+            worker.WorkerSupportsCancellation = true;
+            int totalElements = matrixA.GetLength(0) * matrixB.GetLength(1);
             int processedElements = 0;
 
-            for (int i = 0; i < dimensions.RowsMatrix1; i++)
+            Parallel.For(0, matrixA.GetLength(0), i =>
             {
-                for (int j = 0; j < dimensions.ColsMatrix2; j++)
+                for (int j = 0; j < matrixB.GetLength(1); j++)
                 {
-                    if (worker.CancellationPending)
+                    lock (lockObject)
                     {
-                        e.Cancel = true;
-                        return;
+                        if (worker.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+
+                        // Perform multiplication
+                        resultMatrix[i, j] = 0;
+                        for (int k = 0; k < matrixA.GetLength(1); k++)
+                        {
+                            resultMatrix[i, j] += matrixA[i, k] * matrixB[k, j];
+                        }
+
+                        processedElements++;
+
+                        // Report progress
+                        int progressPercentage = (int)((double)processedElements / totalElements * 100);
+                        worker.ReportProgress(progressPercentage);
                     }
-
-                    // Perform multiplication
-                    resultMatrix[i, j] = 0;
-                    for (int k = 0; k < dimensions.ColsMatrix1; k++)
-                    {
-                        resultMatrix[i, j] += matrixA[i, k] * matrixB[k, j];
-                    }
-
-                    processedElements++;
-
-                    // Report progress
-                    int progressPercentage = (int)((double)processedElements / totalElements * 100);
-                    worker.ReportProgress(progressPercentage);
-
-                    // Simulate some delay to see progress bar in action
-                    Thread.Sleep(10);
 
                     // Check if paused
                     while (isPaused)
@@ -105,9 +109,8 @@ namespace BackGroundWorker
                         Thread.Sleep(100);
                     }
                 }
-            }
+            });
 
-            // Assign the result to e.Result if needed
             e.Result = resultMatrix;
         }
 
@@ -120,7 +123,7 @@ namespace BackGroundWorker
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    matrix[i, j] = random.Next(0, 50); 
+                    matrix[i, j] = random.Next(0, 5); 
                 }
             }
             
@@ -152,19 +155,24 @@ namespace BackGroundWorker
             btnPause.Enabled = false;
             btnContinue.Enabled = false;
             btnStop.Enabled = false;
+            backgroundWorker1.WorkerSupportsCancellation = false;
         }
 
         private void DisplayMatrix(int[,]? matrix, TextBox textBox)
         {
-            textBox.Clear();
+            if (matrix == null) return;
+
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    textBox.Text += matrix[i, j] + "\t";
+                    sb.Append(matrix[i, j] + "\t");
                 }
-                textBox.Text += Environment.NewLine;
+                sb.AppendLine();
             }
+
+            textBox.Invoke((Action)(() => textBox.Text = sb.ToString()));
         }
     }
 }
